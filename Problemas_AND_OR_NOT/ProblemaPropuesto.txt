@@ -1,0 +1,99 @@
+Problema 1: 
+----------
+
+En una página web se solicitan los siguientes datos para guardar información de sus visitas:
+ nombre, mail, pais.
+
+1- Elimine la tabla "visitas", si existe.
+
+2- Créela con la siguiente estructura:
+ create table visitas (
+  numero int unsigned auto_increment,
+  nombre varchar(30) not null,
+  mail varchar(50),
+  pais varchar (20),
+  fecha datetime,
+  primary key(numero)
+);
+
+3- Ingrese algunos registros:
+ insert into visitas (nombre,mail,pais,fecha)
+  values ('Ana Maria Lopez','AnaMaria@hotmail.com','Argentina','2006-10-10 10:10');
+ insert into visitas (nombre,mail,pais,fecha)
+  values ('Gustavo Gonzalez','GustavoGGonzalez@hotmail.com','Chile','2006-10-10 21:30');
+ insert into visitas (nombre,mail,pais,fecha)
+  values ('Juancito','JuanJosePerez@hotmail.com','Argentina','2006-10-11 15:45');
+ insert into visitas (nombre,mail,pais,fecha)
+  values ('Fabiola Martinez','MartinezFabiola@hotmail.com','Mexico','2006-10-12 08:15');
+ insert into visitas (nombre,mail,pais,fecha)
+  values ('Fabiola Martinez','MartinezFabiola@hotmail.com','Mexico','2006-09-12 20:45');
+ insert into visitas (nombre,mail,pais,fecha)
+  values ('Juancito','JuanJosePerez@hotmail.com','Argentina','2006-09-12 16:20');
+ insert into visitas (nombre,mail,pais,fecha)
+  values ('Juancito','JuanJosePerez@hotmail.com','Argentina','2006-09-15 16:25');
+
+4- Muestre los datos de las visitas de "Argentina" que hayan ingresado después del mes de 
+septiembre (9):
+ select*from visitas
+  where pais='Argentina' and
+  month(fecha)>9;
+
+5- Elimine todos los registros cuyo pais no sea "Mexico" y que hayan visitado la página antes de 
+las 16 hs.:
+ delete from visitas
+  where pais<>'Mexico' and
+  hour(fecha)<16;
+
+
+
+
+
+===========================================================================================================
+
+Problema 2 : 
+-----------
+
+Trabajamos con la tabla "peliculas" de un video club que alquila películas en video.
+
+1- Elimine la tabla, si existe.
+
+2- Créela con la siguiente estructura:
+ -codigo (entero sin signo, autoincrementable),
+ -titulo (cadena de 30),
+ -actor (cadena de 20),
+ -duracion (entero sin signo no mayor a 200),
+ -clave primaria (codigo).
+
+3- Ingrese los siguientes registros:
+ insert into peliculas (titulo,actor,duracion)
+  values('Mision imposible','Tom Cruise',120);
+ insert into peliculas (titulo,actor,duracion)
+  values('Harry Potter y la piedra filosofal','Daniel R.',180);
+ insert into peliculas (titulo,actor,duracion)
+  values('Harry Potter y la camara secreta','Daniel R.',190);
+ insert into peliculas (titulo,actor,duracion)
+  values('Mision imposible 2','Tom Cruise',120);
+ insert into peliculas (titulo,actor,duracion)
+  values('Mujer bonita','Richard Gere',120);
+ insert into peliculas (titulo,actor,duracion)
+  values('Tootsie','D. Hoffman',90);
+ insert into peliculas (titulo,actor,duracion)
+  values('Un oso rojo','Julio Chavez',100);
+ insert into peliculas (titulo,actor,duracion)
+  values('Elsa y Fred','China Zorrilla',110);
+
+4- Recupere los registros cuyo actor sea "Tom Cruise" or "Richard Gere". (3 registros).
+
+5- Recupere los registros cuyo actor sea "Tom Cruise" y "Richard Gere". 
+   (ninguno cumple ambas condiciones).
+
+6- Cambie la duración a 200, de las películas cuyo actor sea "Daniel R." y cuya duración sea 180. 
+(1 registro afectado).
+
+8- Borre todas las películas donde el actor NO sea "Tom Cruise" y cuya duración sea mayor o igual a 
+100:
+ delete from peliculas
+  where not actor='Tom Cruise' and
+  duracion<=100;
+Deben borrarse 2 registros.
+
